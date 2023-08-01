@@ -75,6 +75,21 @@ class user_model extends ci_model{
 		  return $kodejadi;
 	}
 
+   public function telat_pinjam()
+   {
+      $current_date = date('Y-m-d');
+      $this->db->select('pengguna.nama as name, pengguna.email,buku.judul,peminjaman.tempo');
+      $this->db->from('peminjaman');
+      $this->db->join('pengguna', 'pengguna.id_anggota = peminjaman.id_anggota');
+      $this->db->join('p_buku', 'p_buku.id_pinjam = peminjaman.id_pinjam');
+      $this->db->join('buku', 'buku.id_buku = p_buku.id_buku');
+      $this->db->where('peminjaman.tempo <', $current_date);
+      $this->db->where('peminjaman.status', 'Pinjam');
+      $this->db->order_by('email','ASC');
+      $query = $this->db->get();
+      return $query->result();
+   }
+
 
 
 

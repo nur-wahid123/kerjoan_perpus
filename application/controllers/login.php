@@ -34,7 +34,6 @@ class Login extends CI_Controller {
     	$cek = $this->login_model->cek_login($where, 'pengguna')->num_rows();
     	$data = $this->login_model->cek_login($where, 'pengguna')->row_array();
     	if ($cek > 0) {
-
     		$sessi = array(
 				'id_user' => $data['id_user'],
     			'username' => $data['nama'],

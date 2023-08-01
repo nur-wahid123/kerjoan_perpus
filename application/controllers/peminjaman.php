@@ -19,7 +19,6 @@ class Peminjaman extends CI_Controller {
 		$data['pinjam'] = $this->peminjaman_model->dataJoin()->result();
 		$idang = $this->session->userdata('id_anggota');
 		$data['pinjambyid'] = $this->peminjaman_model->dataJoinbyId($idang)->result();
-
 		$this->load->view('templates/header', $data);
 		$this->load->view('peminjaman/index');
 		$this->load->view('templates/footer');
