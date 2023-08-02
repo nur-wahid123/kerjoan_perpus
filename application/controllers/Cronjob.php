@@ -14,18 +14,6 @@ class Cronjob extends CI_Controller
     public function dailyTask()
     {
         $this->load->library('email');
-        $config = array(
-            'protocol' => 'smtp',             // Use 'smtp' for using SMTP server
-            'smtp_host' => 'web8-cpn.neohosting.id',  // Replace with your SMTP server hostname
-            'smtp_port' => '465',             // Replace with your SMTP server port (e.g., 587)
-            'smtp_user' => '_mainaccount@perpusstikesabdurahmanplg.my.id',   // Replace with your domain email username
-            'smtp_pass' => 'Yq3t__2sr%',   // Replace with your domain email password
-            'mailtype' => 'html',
-            'charset' => 'utf-8',
-            'newline' => "\r\n",
-            'wordwrap' => TRUE
-        );
-        $this->email->initialize($config);
         
         $oke = $this->user_model->telat_pinjam();
         $temp_email = '';
